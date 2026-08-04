@@ -11,13 +11,13 @@ const emailService= require ("../services/email.service")
 async function userRegisterController(req,res){
     const {email , name , password }= req.body;
     
-    if(!email ||  !name || !password){
-      res.status(400).json({
-        message:"All fields are required" 
+    if (!email || !name || !password) {
+        return res.status(400).json({
+            message: "All fields are required",
         });
- }
+    }
 
-    const isExists= await userModel.findOne({email} )
+    const isExists = await userModel.findOne({ email });
     if(isExists){
         return res.status(400).json({
             message:"User already exists with email",

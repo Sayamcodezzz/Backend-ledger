@@ -16,7 +16,7 @@ transporter.verify((error) => {
     if (error) {
         console.error("Email server error:", error);
     } else {
-        console.log("✅ Email server is ready.");
+        console.log(" Email server is ready.");
     }
 });
 
@@ -82,7 +82,7 @@ Backend Ledger Team
 <td align="center" style="padding:45px 30px;">
 
 <h1 style="margin:0;color:#ffffff;font-size:34px;font-weight:bold;">
-🎉 Welcome to Backend Ledger
+  Welcome to Backend Ledger
 </h1>
 
 <p style="margin:35px 0 15px;font-size:22px;color:#ffffff;">
@@ -147,7 +147,7 @@ Backend Ledger Team
 
 async function sendTransactionEmail(userEmail, name, amount, toAccount) {
 
-    const subject = "✅ Transaction Successful";
+    const subject = " Transaction Successful";
 
     const text = `
 Hello ${name},
