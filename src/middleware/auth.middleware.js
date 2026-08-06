@@ -1,33 +1,41 @@
-const express= require("express");
-const userModel= require("../models/user.model");
 const jwt = require("jsonwebtoken");
+const userModel = require("../models/user.model");
 
-async function authMiddleware(req,res,next){
-    const token=req.cookies.token || req.headers.authorization?.split(" ")[1];
-    if(!token){
+async function authMiddleware(req, res, next) {
+    // console.log("Cookies:", req.cookies);
+    // console.log("Authorization:", req.headers.authorization);
+
+    const token =
+        req.cookies.token ||
+        req.headers.authorization?.split(" ")[1];
+
+    // console.log("Token:", token);
+
+    if (!token) {
         return res.status(401).json({
-            message:"Unauthorized access"
-        })
+            message: "No token found",
+        });
     }
+
     try {
-        const decoded=jwt.verify(token,process.env.JWT_SECRET_KEY);
-      
-        const user = await userModel.findById(decoded.user.id);
-        req.user=user;
-      
+        const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+        // console.log("Decoded:", decoded);
+
+        const user = await userModel.findById(decoded.userId);
+
+        // console.log("User:", user);
+
+        req.user = user;
         next();
-
-    } catch (error) {
-        res.status(401).json({
-            message:"Unauthorised access, Invalid token",
-        })
+    } catch (err) {
+        // console.log(err);
+        return res.status(401).json({
+            message: "Invalid token",
+        });
     }
-    
-    
 }
 
-module.exports={
-
-    authMiddleware
-
-}
+module.exports = {
+    authMiddleware,
+};

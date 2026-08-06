@@ -6,8 +6,8 @@ function connectToDb(){
     .then(()=>{
         console.log("server is connected to DB");
         // console.log(mongoose.connection.name + ": " + mongoose.connection.readyState);
-          console.log("Database Name:", mongoose.connection.name); 
-        console.log("Host:", mongoose.connection.host);
+        //   console.log("Database Name:", mongoose.connection.name); 
+        // console.log("Host:", mongoose.connection.host);
     
         })
     .catch((err)=>{

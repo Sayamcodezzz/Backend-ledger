@@ -14,9 +14,9 @@ const transporter = nodemailer.createTransport({
 // Verify transporter
 transporter.verify((error) => {
     if (error) {
-        console.error("Email server error:", error);
+        // console.error("Email server error:", error);
     } else {
-        console.log(" Email server is ready.");
+        // console.log(" Email server is ready.");
     }
 });
 
@@ -31,9 +31,12 @@ const sendEmail = async (to, subject, text, html) => {
             html,
         });
 
-        console.log("Email Sent:", info.messageId);
+        // console.log("Email Sent:", info.messageId);
     } catch (err) {
-        console.error("Email Error:", err);
+        // console.error("Email Error:", err);
+        return res.status(500).json({
+            message: "Error sending email",
+        });
     }
 };
 
