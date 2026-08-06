@@ -4,7 +4,7 @@ const router = express.Router();
 const authMiddleware= require("../middleware/auth.middleware")
 const accountController= require("../controller/account.controller")
 
-const app=express();
+// const app=express();
 
 
 
