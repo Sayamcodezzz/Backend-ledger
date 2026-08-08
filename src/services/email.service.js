@@ -12,13 +12,13 @@ const transporter = nodemailer.createTransport({
 });
 
 // Verify transporter
-transporter.verify((error) => {
-    if (error) {
-        // console.error("Email server error:", error);
-    } else {
-        // console.log(" Email server is ready.");
-    }
-});
+// transporter.verify((error) => {
+//     if (error) {
+//         // console.error("Email server error:", error);
+//     } else {
+//         // console.log(" Email server is ready.");
+//     }
+// });
 
 // Generic Send Email Function
 const sendEmail = async (to, subject, text, html) => {
@@ -43,6 +43,8 @@ const sendEmail = async (to, subject, text, html) => {
 // =======================
 // Registration Email
 // =======================
+
+
 
 async function sendRegistrationEmail(userEmail, name) {
     const subject = "🎉 Welcome to Backend Ledger";
